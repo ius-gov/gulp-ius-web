@@ -1,4 +1,4 @@
-npm install
+#!/bin/sh
 
 gulp clean
 

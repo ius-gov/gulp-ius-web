@@ -1,5 +1,4 @@
 sudo: required
 script: 
     - npm install
-    - ls -la
-    - sudo travis-test.sh
+    - sudo sh ./travis-test.sh

@@ -11,3 +11,4 @@ script:
     - gulp concat
     - if [ ! -f 'wwwroot/js/site.js' ]; then echo "Site.js not created" exit 1 fi
     - if [ ! -f 'wwwroot/css/site.css' ]; then echo "Site.css not created" exit 1 fi
+

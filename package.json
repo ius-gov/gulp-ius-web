@@ -29,8 +29,5 @@
     "karma-jasmine": "1.x || ^0.3.6",
     "requirejs": "^2.2.0",
     "watchify": "^3.7.0"
-  },
-  "scripts": {
-   "test": "./node_modules/.bin/karma start --single-run test/karma.conf.js"
   }
 }

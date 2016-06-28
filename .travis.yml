@@ -1,4 +1,4 @@
-sudo
+sudo: required
 script: 
     - sudo mkdir -p wwwroot/lib/jquery/dist/
     - sudo mkdir -p wwwroot/lib/pure/

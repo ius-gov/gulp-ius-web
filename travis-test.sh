@@ -1,10 +1,14 @@
-mkdir -p wwwroot/app/js
-mkdir -p wwwroot/app/css
-
-echo "function hellowWorld() { alert('Hello World'); }" > wwwroot/apps/js/site.js
-echo "body { color : 'red'; } " > wwwroot/apps/css/site.css
 
 gulp clean
+
+mkdir -p wwwroot/lib/jquery/dist/
+mkdir -p wwwroot/lib/pure/
+
+echo "function hellowWorld() { alert('Hello World'); }" > wwwroot/lib/jquery/dist/jquery.js
+echo "function hellowWorld() { alert('Hello World'); }" > wwwroot/lib/jquery/dist/jquery.min.js
+echo "body { color : 'red'; } " > wwwroot/lib/pure/pure.css
+echo "body { color : 'red'; } " > wwwroot/lib/pure/pure.min.css
+
 gulp concat
 
 if [ ! -f 'wwwroot/js/site.js' ]; then

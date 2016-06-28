@@ -49,8 +49,7 @@ gulp.task('concat:js', ['clean:js', 'typescript'], function () {
             './' + BOWER_COMPONENTS + '/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js',
             './' + BOWER_COMPONENTS + '/datatables/media/js/dataTables.js',
             './' + BOWER_COMPONENTS + '/system.js/dist/system.js',
-            './wwwroot/app/iUS.UX/*.js',
-            './wwwroot/app/js/site.js'
+            './wwwroot/app/iUS.UX/*.js'
     ])
     .pipe(debug())
         .pipe(concat(OUTPUT_FILE_NAME + '.js'))
@@ -64,8 +63,7 @@ gulp.task('concat:css', ['clean:css', 'sass'], function () {
             './' + BOWER_COMPONENTS + '/iUS.UX/fonts/icomoon/style.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/css/external/jquery-ui.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/css/external/jquery-ui.theme.css',
-            './wwwroot/app/css/ius.css',
-            './wwwroot/app/css/site.css'
+            './wwwroot/app/css/ius.css'
     ])
         .pipe(concat(OUTPUT_FILE_NAME + '.css'))
         .pipe(gulp.dest('./wwwroot/css/'));

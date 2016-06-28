@@ -2,6 +2,9 @@ npm install
 
 gulp clean
 
+mkdir -p wwwroot/lib/jquery/dist/
+mkdir -p wwwroot/lib/pure/
+
 echo "function hellowWorld() { alert('Hello World'); }" > wwwroot/lib/jquery/dist/jquery.js
 echo "function hellowWorld() { alert('Hello World'); }" > wwwroot/lib/jquery/dist/jquery.min.js
 echo "body { color : 'red'; } " > wwwroot/lib/pure/pure.css

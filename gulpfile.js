@@ -40,7 +40,7 @@ gulp.task("clean:bower", function () {
 gulp.task("concat", ["concat:js", "concat:css"]);
 
 
-gulp.task('concat:js', ['typescript'], function () {
+gulp.task('concat:js', ['clean:js', 'typescript'], function () {
     return gulp.src([
             './' + BOWER_COMPONENTS + '/jquery/dist/jquery.js',
             './' + BOWER_COMPONENTS + '/jquery-ui/jquery-ui.js',
@@ -56,7 +56,7 @@ gulp.task('concat:js', ['typescript'], function () {
         .pipe(gulp.dest('./wwwroot/js/'));
 });
 
-gulp.task('concat:css', ['sass'], function () {
+gulp.task('concat:css', ['clean:css', 'sass'], function () {
     return gulp.src([
             './' + BOWER_COMPONENTS + '/pure/pure.css',
             './' + BOWER_COMPONENTS + '/pure/grids-responsive.css',
@@ -71,7 +71,7 @@ gulp.task('concat:css', ['sass'], function () {
 });
 
 gulp.task('uglify:js', ['concat:js'], function () {
-    return gulp.src('./wwwroot/js/*.js')
+    return gulp.src(['./wwwroot/js/*.js', '!./wwwroot/js/*.min.js'])
         .pipe(debug())
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))

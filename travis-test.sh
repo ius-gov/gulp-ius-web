@@ -20,7 +20,14 @@ echo "body { color : 'red'; } " > wwwroot/lib/pure/pure.min.css
 echo "Running Gulp Concat"
 gulp concat
 
-echo "asserting files were created"
-if [ ! -f 'wwwroot/js/site.js' ]; then echo "Site.js not created" exit 1 fi
+echo "asserting javascript files were created"
+if [ ! -f 'wwwroot/js/site.js' ]; then 
+	echo "Site.js not created" 
+	exit 1 
+fi
 
-if [ ! -f 'wwwroot/css/site.css' ]; then echo "Site.css not created" exit 1 fi
+echo "asserting css files were created"
+if [ ! -f 'wwwroot/css/site.css' ]; then 
+	echo "Site.css not created" 
+	exit 1 
+fi

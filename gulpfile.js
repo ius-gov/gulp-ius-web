@@ -47,7 +47,7 @@ gulp.task('concat:js', ['clean:js', 'typescript'], function () {
             './' + BOWER_COMPONENTS + '/jquery-validation/dist/jquery.validate.js',
             './' + BOWER_COMPONENTS + '/jquery-validation/dist/additional-methods.js',
             './' + BOWER_COMPONENTS + '/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js',
-            './' + BOWER_COMPONENTS + '/datatables/media/js/dataTables.js',
+            './' + BOWER_COMPONENTS + '/datatables/media/js/dataTables.jqueryui.js',
             './' + BOWER_COMPONENTS + '/system.js/dist/system.js',
             './wwwroot/app/iUS.UX/*.js'
     ])
@@ -60,6 +60,7 @@ gulp.task('concat:css', ['clean:css', 'sass'], function () {
     return gulp.src([
             './' + BOWER_COMPONENTS + '/pure/pure.css',
             './' + BOWER_COMPONENTS + '/pure/grids-responsive.css',
+            './' + BOWER_COMPONENTS + '/datatables/media/css/dataTables.jqueryui.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/fonts/icomoon/style.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/css/external/jquery-ui.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/css/external/jquery-ui.theme.css',
@@ -103,7 +104,10 @@ gulp.task('copyfonts', function () {
 });
 
 gulp.task('copyimages', function () {
-    return gulp.src(['./wwwroot/lib/iUS.UX/images/**'])
+    return gulp.src([
+        './' + BOWER_COMPONENTS + "/datatables/media/images/**",
+        './wwwroot/lib/iUS.UX/images/**'
+        ])
       .pipe(debug())
       .pipe(gulp.dest('./wwwroot/images/'));
 });

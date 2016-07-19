@@ -48,7 +48,7 @@ gulp.task('concat:js', ['clean:js', 'typescript'], function () {
             './' + BOWER_COMPONENTS + '/jquery-validation/dist/additional-methods.min.js',
             './' + BOWER_COMPONENTS + '/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js',
             './' + BOWER_COMPONENTS + '/datatables.net/js/dataTables.min.js',
-            './' + BOWER_COMPONENTS + '/datatables.net=buttons/js/*.min.js',
+            './' + BOWER_COMPONENTS + '/datatables.net-buttons/js/*.min.js',
             './' + BOWER_COMPONENTS + '/system.js/dist/system.min.js',
             './wwwroot/app/iUS.UX/*.js'
     ])

@@ -47,8 +47,8 @@ gulp.task('concat:js', ['clean:js', 'typescript'], function () {
             './' + BOWER_COMPONENTS + '/jquery-validation/dist/jquery.validate.js',
             './' + BOWER_COMPONENTS + '/jquery-validation/dist/additional-methods.js',
             './' + BOWER_COMPONENTS + '/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js',
-            './' + BOWER_COMPONENTS + '/datatables.net/js/dataTables.js',
-            './' + BOWER_COMPONENTS + '/datatables.net-buttons/js/*.js',
+            './' + BOWER_COMPONENTS + '/datatables.net/js/jquery.dataTables.js',
+            './' + BOWER_COMPONENTS + '/datatables.net-buttons/js/dataTables.buttons.js',
             './' + BOWER_COMPONENTS + '/system.js/dist/system.js',
             './wwwroot/app/iUS.UX/*.js'
     ])
@@ -57,15 +57,24 @@ gulp.task('concat:js', ['clean:js', 'typescript'], function () {
         .pipe(gulp.dest('./wwwroot/js/'));
 });
 
-gulp.task('concat:css', ['clean:css', 'sass'], function () {
+gulp.task('concat:site-css', ['clean:css', 'sass'], function(){
+    return gulp.src(['./wwwroot/app/css/*.css', '!./wwwroot/app/css/ius.css'])
+    .pipe(debug())
+    .pipe(concat("site.css"))
+    .pipe(gulp.dest('./wwwroot/app/css/'));
+});
+
+gulp.task('concat:css', ['concat:site-css'], function () {
     return gulp.src([
             './' + BOWER_COMPONENTS + '/pure/pure.css',
             './' + BOWER_COMPONENTS + '/pure/grids-responsive.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/fonts/icomoon/style.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/css/external/jquery-ui.css',
             './' + BOWER_COMPONENTS + '/iUS.UX/css/external/jquery-ui.theme.css',
-            './wwwroot/app/css/ius.css'
+            './wwwroot/app/css/ius.css',
+            './wwwroot/app/css/site.css'
     ])
+        .pipe(debug())
         .pipe(concat(OUTPUT_FILE_NAME + '.css'))
         .pipe(gulp.dest('./wwwroot/css/'));
 });

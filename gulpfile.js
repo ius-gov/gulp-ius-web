@@ -42,14 +42,14 @@ gulp.task("concat", ["concat:js", "concat:css"]);
 
 gulp.task('concat:js', ['clean:js', 'typescript'], function () {
     return gulp.src([
-            './' + BOWER_COMPONENTS + '/jquery/dist/jquery.min.js',
-            './' + BOWER_COMPONENTS + '/jquery-ui/jquery-ui.min.js',
-            './' + BOWER_COMPONENTS + '/jquery-validation/dist/jquery.validate.min.js',
-            './' + BOWER_COMPONENTS + '/jquery-validation/dist/additional-methods.min.js',
-            './' + BOWER_COMPONENTS + '/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js',
-            './' + BOWER_COMPONENTS + '/datatables.net/js/dataTables.min.js',
-            './' + BOWER_COMPONENTS + '/datatables.net-buttons/js/*.min.js',
-            './' + BOWER_COMPONENTS + '/system.js/dist/system.min.js',
+            './' + BOWER_COMPONENTS + '/jquery/dist/jquery.js',
+            './' + BOWER_COMPONENTS + '/jquery-ui/jquery-ui.js',
+            './' + BOWER_COMPONENTS + '/jquery-validation/dist/jquery.validate.js',
+            './' + BOWER_COMPONENTS + '/jquery-validation/dist/additional-methods.js',
+            './' + BOWER_COMPONENTS + '/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js',
+            './' + BOWER_COMPONENTS + '/datatables.net/js/dataTables.js',
+            './' + BOWER_COMPONENTS + '/datatables.net-buttons/js/*.js',
+            './' + BOWER_COMPONENTS + '/system.js/dist/system.js',
             './wwwroot/app/iUS.UX/*.js'
     ])
     .pipe(debug())

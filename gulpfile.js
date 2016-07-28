@@ -6,6 +6,7 @@ var sass = require("gulp-sass");
 var rename = require("gulp-rename");
 var uglify = require("gulp-uglify");
 var bower = require("gulp-bower");
+var cleanCSS = require("gulp-clean-css");
 var clean = require("gulp-clean");
 var ts = require("gulp-typescript");
 var debug = require("gulp-debug");
@@ -37,14 +38,15 @@ gulp.task("concat", ["concat:js", "concat:css"]);
 gulp.task("concat:js", ["clean:js"], function () {
     return gulp.src([
             "./" + BOWER_COMPONENTS + "/jquery/dist/jquery.js",
-            "./" + BOWER_COMPONENTS + "/jquery-ui/jquery-ui.js",
             "./" + BOWER_COMPONENTS + "/jquery-validation/dist/jquery.validate.js",
             "./" + BOWER_COMPONENTS + "/jquery-validation/dist/additional-methods.js",
             "./" + BOWER_COMPONENTS + "/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
             "./" + BOWER_COMPONENTS + "/datatables.net/js/jquery.dataTables.js",
             "./" + BOWER_COMPONENTS + "/datatables.net-buttons/js/dataTables.buttons.js",
             "./" + BOWER_COMPONENTS + "/system.js/dist/system.js",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/*.js"
+            "./" + BOWER_COMPONENTS + "/iUS.UX/dist/iusHelpers.js",
+            "./" + BOWER_COMPONENTS + "/iUS.UX/dist/iusForm.js",
+            "./" + BOWER_COMPONENTS + "/iUS.UX/dist/iusUX.js"
     ])
     .pipe(debug())
         .pipe(concat(OUTPUT_FILE_NAME + ".js"))
@@ -53,14 +55,19 @@ gulp.task("concat:js", ["clean:js"], function () {
 
 gulp.task("concat:css", function () {
     return gulp.src([
-            "./" + BOWER_COMPONENTS + "/iUS.UX/fonts/icomoon/style.css",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/css/external/jquery-ui.css",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/css/external/jquery-ui.theme.css",
-            "./wwwroot/css/" + OUTPUT_FILE_NAME + ".css"
+            "./wwwroot/css/*.css"
     ])
         .pipe(debug())
         .pipe(concat(OUTPUT_FILE_NAME + ".css"))
         .pipe(gulp.dest("./wwwroot/css/"));
+});
+
+gulp.task("minify:css", ["concat:css"], function () {
+    return gulp.src(["./wwwroot/css/*.css", "!css/*.min.css"])
+        .pipe(debug())
+        .pipe(cleanCSS({ compatibility: "ie8" }))
+        .pipe(rename({ suffix: ".min" }))
+        .pipe(gulp.dest("./wwwroot/css"));
 });
 
 gulp.task("uglify:js", ["concat:js"], function () {

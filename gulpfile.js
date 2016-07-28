@@ -87,7 +87,7 @@ gulp.task("uglify:js", ["concat:js"], function () {
 gulp.task("sass", ["sass:local-app"]);
 
 gulp.task("sass:local-app", function () {
-    return gulp.src("./wwwroot/scss/" + OUTPUT_FILE_NAME + ".scss")
+    return gulp.src("./wwwroot/css/" + OUTPUT_FILE_NAME + ".scss")
         .pipe(sass())
         .pipe(gulp.dest("./wwwroot/css"));
 });

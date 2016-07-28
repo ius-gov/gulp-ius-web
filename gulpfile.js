@@ -44,16 +44,16 @@ gulp.task("concat:js", ["clean:js"], function () {
             "./" + BOWER_COMPONENTS + "/datatables.net/js/jquery.dataTables.js",
             "./" + BOWER_COMPONENTS + "/datatables.net-buttons/js/dataTables.buttons.js",
             "./" + BOWER_COMPONENTS + "/system.js/dist/system.js",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/dist/iusHelpers.js",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/dist/iusForm.js",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/dist/iusUX.js"
+            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusHelpers.js",
+            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusForm.js",
+            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusUX.js"
     ])
     .pipe(debug())
         .pipe(concat(OUTPUT_FILE_NAME + ".js"))
         .pipe(gulp.dest("./wwwroot/js/"));
 });
 
-gulp.task("concat:css", function () {
+gulp.task("concat:css", ["sass"], function () {
     return gulp.src([
             "./" + BOWER_COMPONENTS + "/pure/pure.css",
             "./" + BOWER_COMPONENTS + "/pure/grids-responsive.css",

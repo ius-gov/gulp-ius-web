@@ -93,7 +93,7 @@ gulp.task("copyfonts", function () {
 });
 
 gulp.task("copyimages", function () {
-    return gulp.src([ "./wwwroot/lib/iUS.UX/images/**"])
+    return gulp.src(["./wwwroot/lib/iUS.UX/images/**"])
       .pipe(debug())
       .pipe(gulp.dest("./wwwroot/images/"));
 });
@@ -102,4 +102,3 @@ gulp.task("watch", function () {
     gulp.watch("./wwwroot/**/*.ts", ["typescript"]);
     gulp.watch("./wwwroot/**/*.scss", ["sass"]);
 });
-

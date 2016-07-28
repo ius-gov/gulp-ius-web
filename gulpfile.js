@@ -55,6 +55,12 @@ gulp.task("concat:js", ["clean:js"], function () {
 
 gulp.task("concat:css", function () {
     return gulp.src([
+            "./" + BOWER_COMPONENTS + "/pure/pure.css",
+            "./" + BOWER_COMPONENTS + "/pure/grids-responsive.css",
+            "./" + BOWER_COMPONENTS + "/air-datepicker/dist/css/datepicker.css",
+            "./" + BOWER_COMPONENTS + "/datatables.net-dt/css/jquery.dataTables.css",
+            "./" + BOWER_COMPONENTS + "/datatables.net-buttons-dt/css/buttons.dataTables.css",
+            "./" + BOWER_COMPONENTS + "/iUS.UX/fonts/icomoon/style.css",
             "./wwwroot/css/*.css"
     ])
         .pipe(debug())

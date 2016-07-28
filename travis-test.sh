@@ -12,23 +12,23 @@ echo "function hellowWorld() { alert('Hello World'); }" > wwwroot/lib/jquery/dis
 echo "function hellowWorld() { alert('Hello World'); }" > wwwroot/lib/jquery/dist/jquery.min.js
 
 echo 'Creating css folder'
-mkdir -p wwwroot/lib/pure/
+mkdir -p wwwroot/css/
 
 echo "Writing css file"
-echo "body { color : 'red'; } " > wwwroot/lib/pure/pure.css
-echo "body { color : 'red'; } " > wwwroot/lib/pure/pure.min.css
+echo "body { color : 'red'; } " > wwwroot/css/pure.css
+echo "body { color : 'red'; } " > wwwroot/css/pure.min.css
 
 echo "Running Gulp Concat"
 gulp concat
 
 echo "asserting javascript files were created"
 if [ ! -f 'wwwroot/js/site.js' ]; then 
-	echo "Site.js not created" 
+	echo "site.js not created" 
 	exit 1 
 fi
 
 echo "asserting css files were created"
 if [ ! -f 'wwwroot/css/site.css' ]; then 
-	echo "Site.css not created" 
+	echo "site.css not created" 
 	exit 1 
 fi

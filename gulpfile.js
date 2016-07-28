@@ -93,13 +93,13 @@ gulp.task("sass:local-app", function () {
 });
 
 gulp.task("copyfonts", function () {
-    return gulp.src(["./wwwroot/lib/iUS.UX/fonts/icomoon/fonts/**"])
+    return gulp.src(["./" + BOWER_COMPONENTS + "/iUS.UX/fonts/icomoon/fonts/**"])
       .pipe(debug())
       .pipe(gulp.dest("./wwwroot/css/fonts/"));
 });
 
 gulp.task("copyimages", function () {
-    return gulp.src(["./wwwroot/lib/iUS.UX/images/**"])
+    return gulp.src(["./" + BOWER_COMPONENTS + "/iUS.UX/images/**", "./" + BOWER_COMPONENTS + "/datatables.net-dt/images/**"])
       .pipe(debug())
       .pipe(gulp.dest("./wwwroot/images/"));
 });

@@ -44,6 +44,7 @@ gulp.task("concat:js", ["clean:js"], function () {
             "./" + BOWER_COMPONENTS + "/datatables.net/js/jquery.dataTables.js",
             "./" + BOWER_COMPONENTS + "/datatables.net-buttons/js/dataTables.buttons.js",
             "./" + BOWER_COMPONENTS + "/system.js/dist/system.js",
+            "./" + BOWER_COMPONENTS + "/jquery.maskedinput/dist/jquery.maskedinput.js",
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusHelpers.js",
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusForm.js",
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusUX.js"

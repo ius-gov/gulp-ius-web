@@ -72,7 +72,7 @@ gulp.task("concat:css", ["sass"], function () {
 gulp.task("minify:css", ["concat:css"], function () {
     return gulp.src(["./wwwroot/css/*.css", "!css/*.min.css"])
         .pipe(debug())
-        .pipe(cleanCSS({ compatibility: "ie8" }))
+        .pipe(cleanCSS({ compatibility: "ie8", processImport: false })) //importing google font is breaking this task...???
         .pipe(rename({ suffix: ".min" }))
         .pipe(gulp.dest("./wwwroot/css"));
 });

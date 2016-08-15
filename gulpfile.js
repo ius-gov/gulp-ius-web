@@ -10,6 +10,7 @@ var cleanCSS = require("gulp-clean-css");
 var clean = require("gulp-clean");
 var ts = require("gulp-typescript");
 var debug = require("gulp-debug");
+var copy = require('gulp-contrib-copy');
 
 // Set the global.Filename to override this
 var OUTPUT_FILE_NAME = global.FileName || "site";
@@ -33,26 +34,43 @@ gulp.task("clean:bower", function () {
         .pipe(clean());
 });
 
-gulp.task("concat", ["concat:js", "concat:css"]);
+gulp.task("concat", ["concat:js", "concat:css", "copy:ius-js"]);
 
-gulp.task("concat:js", ["clean:js"], function () {
+gulp.task("concat:js-lib", ["clean:js"], function(){
     return gulp.src([
-            "./" + BOWER_COMPONENTS + "/jquery/dist/jquery.js",
-            "./" + BOWER_COMPONENTS + "/jquery-validation/dist/jquery.validate.js",
+            "./" + BOWER_COMPONENTS + "/jquery/dist/jquery.min.js",
+            "./" + BOWER_COMPONENTS + "/jquery.maskedinput/dist/jquery.maskedinput.min.js",
+            "./" + BOWER_COMPONENTS + "/jquery-validation/dist/jquery.validate.min.js",
             "./" + BOWER_COMPONENTS + "/jquery-validation/dist/additional-methods.js",
-            "./" + BOWER_COMPONENTS + "/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
-            "./" + BOWER_COMPONENTS + "/datatables.net/js/jquery.dataTables.js",
-            "./" + BOWER_COMPONENTS + "/datatables.net-buttons/js/dataTables.buttons.js",
-            "./" + BOWER_COMPONENTS + "/system.js/dist/system.js",
-            "./" + BOWER_COMPONENTS + "/jquery.maskedinput/dist/jquery.maskedinput.js",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusHelpers.js",
+            "./" + BOWER_COMPONENTS + "/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+            "./" + BOWER_COMPONENTS + "/datatables.net/js/jquery.dataTables.min.js",
+            "./" + BOWER_COMPONENTS + "/system.js/dist/system.js"
+    ])
+    .pipe(debug())
+        .pipe(concat(OUTPUT_FILE_NAME + "-lib.js"))
+        .pipe(gulp.dest("./wwwroot/js/"));
+})
+
+gulp.task("concat:js", ["concat:js-lib"], function () {
+    return gulp.src(["./wwwroot/js/" + OUTPUT_FILE_NAME + "-lib.js",
+            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusUX.js",
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusForm.js",
-            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusUX.js"
+            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusHelpers.js"
     ])
     .pipe(debug())
         .pipe(concat(OUTPUT_FILE_NAME + ".js"))
         .pipe(gulp.dest("./wwwroot/js/"));
 });
+
+gulp.task("copy:ius-js", function () {
+    return gulp.src([
+            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/*.js"
+    ])
+    .pipe(debug())
+    .pipe(copy())
+        .pipe(gulp.dest("./wwwroot/app/iUS.UX/"));
+});
+
 
 gulp.task("concat:css", ["sass"], function () {
     return gulp.src([

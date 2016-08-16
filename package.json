@@ -13,6 +13,7 @@
     "gulp-clean-css": "~2.0.6",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
+    "gulp-contrib-copy": "^0.1.2",
     "gulp-debug": "^2.1.2",
     "gulp-json-editor": "^2.2.1",
     "gulp-rename": "^1.2.2",

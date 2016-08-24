@@ -10,7 +10,6 @@ var cleanCSS = require("gulp-clean-css");
 var clean = require("gulp-clean");
 var ts = require("gulp-typescript");
 var debug = require("gulp-debug");
-var copy = require('gulp-contrib-copy');
 
 // Set the global.Filename to override this
 var OUTPUT_FILE_NAME = global.FileName || "site";
@@ -67,7 +66,6 @@ gulp.task("copy:ius-js", function () {
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/*.js"
     ])
     .pipe(debug())
-    .pipe(copy())
         .pipe(gulp.dest("./wwwroot/app/iUS.UX/"));
 });
 

@@ -55,7 +55,7 @@ gulp.task("concat:js", ["concat:js-lib"], function () {
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusUX.js",
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusForm.js",
             "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusHelpers.js",
-			"./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusDataTables.js"
+            "./" + BOWER_COMPONENTS + "/iUS.UX/scripts/dist/iusDataTables.js"
     ])
     .pipe(debug())
         .pipe(concat(OUTPUT_FILE_NAME + ".js"))
